@@ -2,7 +2,6 @@
   "name": "tilbudstracker",
   "version": "1.0.0",
   "description": "A tracker that tracks all tilbuds",
-  "main": "index.js",
   "dependencies": {
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
@@ -17,11 +16,11 @@
   },
   "devDependencies": {},
   "scripts": {
-    "startServer": "node ./bin/www",
-    "startServerDev": "nodemon ./bin/www",
-    "devClient": "next dev",
-    "buildClient": "next build",
-    "startClient": "next start"
+    "startServer": "node ./api/bin/www",
+    "startServerDev": "nodemon ./api/bin/www",
+    "startClientDev": "cd ./client && next dev -p 4000",
+    "buildClient": "cd ./client && next build -p 4000",
+    "startClient": "cd ./client && next start -p 4000"
   },
   "repository": {
     "type": "git",
