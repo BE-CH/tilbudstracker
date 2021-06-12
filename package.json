@@ -1,0 +1,36 @@
+{
+  "name": "tilbudstracker",
+  "version": "1.0.0",
+  "description": "A tracker that tracks all tilbuds",
+  "main": "index.js",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "~4.16.1",
+    "helmet": "^4.6.0",
+    "morgan": "~1.9.1",
+    "next": "10.2.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "startServer": "node ./bin/www",
+    "startServerDev": "nodemon ./bin/www",
+    "devClient": "next dev",
+    "buildClient": "next build",
+    "startClient": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BE-CH/tilbudstracker.git"
+  },
+  "author": "Mikkel Bech @ Bech Solutions",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BE-CH/tilbudstracker/issues"
+  },
+  "homepage": "https://github.com/BE-CH/tilbudstracker#readme"
+}
