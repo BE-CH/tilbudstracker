@@ -1,0 +1,38 @@
+.logoItems {
+  color: white;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline;
+    margin-left: 35px;
+  }
+}
+
+.logo {
+  color: white;
+  p {
+    font-size: 30px;
+  }
+}
+
+.innerHeader {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  background-color: #212121;
+}
