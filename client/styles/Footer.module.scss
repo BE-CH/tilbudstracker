@@ -1,0 +1,23 @@
+.footer {
+  width: 100%;
+  height: 40px;
+  background-color: #212121;
+}
+
+.innerFooter {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  p {
+    color: white;
+  }
+
+  a {
+    color: lightskyblue;
+  }
+}
