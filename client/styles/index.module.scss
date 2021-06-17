@@ -50,4 +50,28 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
+  color: white;
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    background-color: rgb(56, 56, 56);
+    border-radius: 2px;
+    text-align: left;
+    padding: 8px;
+    vertical-align: middle;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  i {
+    font-style: italic;
+  }
 }
