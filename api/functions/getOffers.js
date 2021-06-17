@@ -1,8 +1,8 @@
 const axios = require('axios');
 
-module.exports = getAllOffers = (type) => {
+module.exports = getAllOffers = (type, amount) => {
   return new Promise((resolve, reject) => {
-    getAllItems(type)
+    getAllItems(type, amount)
       .then((items) => {
         console.log('DO SOME DATABASE STUFF HERE!');
         resolve(items);
@@ -13,14 +13,14 @@ module.exports = getAllOffers = (type) => {
   });
 };
 
-getAllItems = (type) => {
+getAllItems = (type, amount) => {
   return new Promise((resolve, reject) => {
     const items = [];
     const promises = [];
 
     if (type === 'rema' || type === 'all') {
       console.log('Getting rema offers!');
-      promises.push(getRemaOffers());
+      promises.push(getRemaOffers(amount));
     }
 
     if (type === 'foetex' || type === 'all') {
@@ -42,7 +42,7 @@ getAllItems = (type) => {
   });
 };
 
-getRemaOffers = () => {
+getRemaOffers = (amount) => {
   return new Promise((resolve, reject) => {
     var options = {
       method: 'POST',
@@ -146,26 +146,28 @@ getRemaOffers = () => {
             const categoryHits = category.hits;
             categoryHits.forEach((item) => {
               if (item.pricing.is_on_discount) {
-                const itemObject = {
-                  id: item.id,
-                  name: item.name,
-                  store: 'rema1000',
-                  underline: item.underline,
-                  description: item.description,
-                  department_id: item.department_id,
-                  department_name: item.department_name,
-                  category_id: item.category_id,
-                  category_name: item.category_name,
-                  popularity: item.extra.popularity,
-                  imageurl: item.image_url,
-                  pricing: item.pricing,
-                };
+                if (items.length < amount || amount === 'all') {
+                  const itemObject = {
+                    id: item.id,
+                    name: item.name,
+                    store: 'rema1000',
+                    underline: item.underline,
+                    description: item.description,
+                    department_id: item.department_id,
+                    department_name: item.department_name,
+                    category_id: item.category_id,
+                    category_name: item.category_name,
+                    popularity: item.extra.popularity,
+                    imageurl: item.image_url,
+                    pricing: item.pricing,
+                  };
 
-                itemObject.pricing.procentage_change =
-                  ((itemObject.pricing.normal_price - itemObject.pricing.price) / itemObject.pricing.normal_price) *
-                  100;
+                  itemObject.pricing.procentage_change =
+                    ((itemObject.pricing.normal_price - itemObject.pricing.price) / itemObject.pricing.normal_price) *
+                    100;
 
-                items.push(itemObject);
+                  items.push(itemObject);
+                }
               }
             });
           }

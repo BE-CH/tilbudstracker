@@ -6,36 +6,44 @@ export default function TableItem({ itemObject }) {
     <tr className={styles.singleItem}>
       <td className={styles.imageTD}>
         <div className={styles.image}>
-          <Image src="/images/milk.jpg" layout="responsive" width="1" height="3"></Image>
+          <Image
+            src={`https://cphapp.rema1000.dk/api/v1${itemObject.imageurl}`}
+            layout="responsive"
+            width="5"
+            height="5"
+          ></Image>
         </div>
       </td>
       <td className={styles.productTD}>
-        <p>Skummetmælk, 0.5% ØKO., 1L</p>
+        <p>
+          {itemObject.name} ({itemObject.underline})
+        </p>
       </td>
       <td className={styles.brandTD}>
-        <p>Arla</p>
+        <p>{itemObject.store}</p>
       </td>
       <td className={styles.priceTD}>
         <p>
-          <span className={styles.green}>8,95 DKK</span>
-          <i> (8,95 pr. Ltr)</i>
+          <span className={styles.green}>{itemObject.pricing.price} DKK</span>
+          <i> ({itemObject.pricing.price_per_unit})</i>
         </p>
       </td>
       <td className={styles.normalPriceTD}>
         <p>
-          <span className={styles.red}>9,95 DKK</span> <i>(9,95 pr. Ltr)</i>
+          <span className={styles.red}>{itemObject.pricing.normal_price} DKK</span>
         </p>
       </td>
       <td className={styles.savingsTD}>
         <p>
           <span className={styles.green}>
-            1,00 DKK <i>(10%)</i>
+            {(itemObject.pricing.normal_price - itemObject.pricing.price).toFixed(2)} DKK{' '}
+            <i>({itemObject.pricing.procentage_change.toFixed(2)}%)</i>
           </span>
         </p>
       </td>
       <td className={styles.linkTD}>
         <div>
-          <a href="https://shop.rema1000.dk/varer/410812" target="_blank">
+          <a href={`https://shop.rema1000.dk/varer/${itemObject.id}`} target="_blank">
             Rema 1000
           </a>
         </div>

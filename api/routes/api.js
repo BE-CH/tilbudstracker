@@ -9,7 +9,21 @@ router.get('/', function (req, res, next) {
 router.get('/getoffers', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.status(200).jsonp({ status: 200, message: 'yeet' });
+  getAllOffers('rema', 'all').then((result) => {
+    result.sort((a, b) => {
+      return b.pricing.procentage_change - a.pricing.procentage_change;
+    });
+
+    result = result.slice(0, 100);
+
+    console.log('ITEMS:', result.length);
+
+    if (result.length > 0) {
+      res.status(200).jsonp({ status: 200, items: result.length, items: result });
+    } else {
+      res.status(404).jsonp({ stuats: 404, items: 0, message: 'No items found' });
+    }
+  });
 });
 
 module.exports = router;
