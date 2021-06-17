@@ -6,6 +6,7 @@ router.get('/', function (req, res, next) {
   res.json({ status: 200 });
 });
 
+// todo please add database stuff.
 router.get('/getoffers', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
