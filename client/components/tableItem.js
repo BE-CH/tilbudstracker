@@ -42,7 +42,7 @@ export default function TableItem({ itemObject }) {
       </td>
       <td className={styles.linkTD}>
         <div>
-          <a href={`https://shop.rema1000.dk/varer/${itemObject.id}`} target="_blank">
+          <a href={`https://shop.rema1000.dk/varer/${itemObject.itemID}`} target="_blank">
             Rema 1000
           </a>
         </div>

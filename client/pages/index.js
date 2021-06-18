@@ -2,12 +2,17 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/index.module.scss';
 import ResultsTable from '../components/ResultsTable';
+import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Home() {
-  const { data, error } = useSWR('http://localhost:3000/api/getoffers', fetcher);
+  const router = useRouter();
+  const { data, error } = useSWR(
+    `http://localhost:3000/api/getoffers?page=${router.query.page}&amountprpage=${router.query.amountprpage}`,
+    fetcher
+  );
 
   return (
     <>

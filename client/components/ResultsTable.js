@@ -17,7 +17,7 @@ export default function ResultsTable({ items }) {
         </thead>
         <tbody>
           {items.map((item) => (
-            <TableItem key={item.id} itemObject={item}></TableItem>
+            <TableItem key={item.itemID} itemObject={item}></TableItem>
           ))}
         </tbody>
       </table>
