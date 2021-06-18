@@ -7,12 +7,15 @@
     "api",
     "client"
   ],
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
   "scripts": {
-    "startServer": "node ./api/bin/www",
-    "startServerDev": "nodemon ./api/bin/www",
-    "startClientDev": "cd ./client && next dev -p 4000",
-    "buildClient": "cd ./client && next build -p 4000",
-    "startClient": "cd ./client && next start -p 4000"
+    "startDev": "yarn workspace api startServerDev & yarn workspace client startClientDev",
+    "startProd": "yarn workspace api startServer & yarn workspace client startClient"
   },
   "repository": {
     "type": "git",

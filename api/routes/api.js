@@ -15,14 +15,10 @@ router.get('/getoffers', (req, res, next) => {
       return b.pricing.procentage_change - a.pricing.procentage_change;
     });
 
-    result = result.slice(0, 100);
-
-    console.log('ITEMS:', result.length);
-
     if (result.length > 0) {
-      res.status(200).jsonp({ status: 200, items: result.length, items: result });
+      res.status(200).jsonp({ status: 200, itemsAmount: result.length, items: result, message: 'Items found' });
     } else {
-      res.status(404).jsonp({ stuats: 404, items: 0, message: 'No items found' });
+      res.status(404).jsonp({ status: 404, itemsAmount: 0, items: [], message: 'No items found' });
     }
   });
 });

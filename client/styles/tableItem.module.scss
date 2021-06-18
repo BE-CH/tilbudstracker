@@ -1,8 +1,10 @@
 .singleItem {
   .image {
-    width: 50px;
+    width: 100%;
+    height: 50px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
   }
 
   .imageTD {

@@ -1,15 +1,75 @@
 const axios = require('axios');
+const Item = require('../models/items');
 
 module.exports = getAllOffers = (type, amount) => {
   return new Promise((resolve, reject) => {
-    getAllItems(type, amount)
-      .then((items) => {
-        console.log('DO SOME DATABASE STUFF HERE!');
-        resolve(items);
-      })
-      .catch((err) => {
-        reject(err);
-      });
+    Item.findOne({}, (err, foundItem) => {
+      if (!err) {
+        if (
+          !foundItem ||
+          (foundItem && (new Date().getTime() - new Date(foundItem.createdAt).getTime()) / 1000 >= 18000)
+        ) {
+          // No items found or older than 5 hours. Add everything
+          console.log('-> ITEMS NEED TO BE UPDATED');
+
+          Item.deleteMany({}, (err, removedObjects) => {
+            if (!err) {
+              getAllItems(type, amount)
+                .then((items) => {
+                  const itemsArrayToUpdate = items.map((item) => {
+                    return {
+                      itemID: item.id,
+                      createdAt: new Date(),
+                      name: item.name,
+                      store: item.store,
+                      underline: item.underline,
+                      description: item.description,
+                      department_id: item.department_id,
+                      department_name: item.department_name,
+                      category_id: item.category_id,
+                      category_name: item.category_name,
+                      popularity: item.popularity,
+                      imageurl: item.imageurl,
+                      pricing: item.pricing,
+                    };
+                  });
+
+                  Item.insertMany(itemsArrayToUpdate, (err, insertedDocs) => {
+                    if (!err) {
+                      resolve(insertedDocs);
+                    } else {
+                      reject(err);
+                    }
+                  });
+                })
+                .catch((err) => {
+                  reject(err);
+                });
+            } else {
+              reject('We could not clear database');
+            }
+          });
+        } else {
+          // return items in database
+
+          if (amount === 'all') {
+            amount = 1000;
+          }
+
+          Item.find({})
+            .limit(amount)
+            .exec((err, foundItems) => {
+              if (!err && foundItems) {
+                resolve(foundItems);
+              } else {
+                reject('We could not find the items in the database');
+              }
+            });
+        }
+      } else {
+        reject('We could query the database');
+      }
+    });
   });
 };
 
@@ -19,7 +79,6 @@ getAllItems = (type, amount) => {
     const promises = [];
 
     if (type === 'rema' || type === 'all') {
-      console.log('Getting rema offers!');
       promises.push(getRemaOffers(amount));
     }
 
@@ -28,7 +87,6 @@ getAllItems = (type, amount) => {
     }
 
     Promise.allSettled(promises).then((result) => {
-      console.log('MAKE ALL ITEMS FROM ALL STORES INTO SAME KIND OF OBJECT');
       result.forEach((resultItem) => {
         if (resultItem.status === 'fulfilled') {
           const resultItemValue = resultItem.value;
@@ -176,8 +234,8 @@ getRemaOffers = (amount) => {
         resolve(items);
       })
       .catch(function (error) {
-        console.error(error);
-        reject(new Error('We could not get the rema offers'));
+        console.error('ERROR GETTING REMA OFFERS:', error.response.data.message);
+        reject(new Error(error.response.data.message));
       });
   });
 };

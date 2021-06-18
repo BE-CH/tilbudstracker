@@ -8,9 +8,8 @@ export default function TableItem({ itemObject }) {
         <div className={styles.image}>
           <Image
             src={`https://cphapp.rema1000.dk/api/v1${itemObject.imageurl}`}
-            layout="responsive"
-            width="5"
-            height="5"
+            objectFit="contain"
+            layout="fill"
           ></Image>
         </div>
       </td>
