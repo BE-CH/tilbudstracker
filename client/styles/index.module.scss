@@ -15,34 +15,19 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 15px;
-}
 
-.searchContainer {
-  width: 30%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  input {
+  .pageContainer div {
+    background-color: rgb(56, 56, 56);
+    color: white;
     padding: 10px;
     box-sizing: border-box;
+    display: inline-block;
     border-radius: 5px;
-    border: 1px solid grey;
-    width: 70%;
-  }
+    margin-right: 10px;
 
-  input:focus {
-    outline: none;
-  }
-
-  button {
-    background-color: lightskyblue;
-    border: none;
-    padding: 10px 40px 10px 40px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 28%;
+    a {
+      color: white;
+    }
   }
 }
 
