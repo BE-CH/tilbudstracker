@@ -6,6 +6,8 @@ export default function Search() {
   const [active, setActive] = useState(false);
   const [results, setResults] = useState([]);
 
+  // on change functionality here
+
   return (
     <div className={styles.searchContainer}>
       <input type="text" placeholder="Find tilbud"></input>
