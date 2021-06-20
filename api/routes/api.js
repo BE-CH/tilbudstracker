@@ -12,22 +12,6 @@ router.get('/getoffers', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   getAllOffers('rema', 'all').then((result) => {
-    if (!page || page === 'undefined') {
-      page = 0;
-    }
-
-    if (!amountprpage || amountprpage === 'undefined') {
-      amountprpage = 20;
-    }
-
-    const startAmount = Math.round(parseInt(page) * parseInt(amountprpage));
-    const endAmount = Math.round(parseInt(page) * parseInt(amountprpage) + parseInt(amountprpage));
-
-    result = result.slice(startAmount, endAmount);
-
-    result.sort((a, b) => {
-      return b.pricing.procentage_change - a.pricing.procentage_change;
-    });
     if (result.length > 0) {
       res.status(200).jsonp({ status: 200, itemsAmount: result.length, items: result, message: 'Items found' });
     } else {

@@ -1,7 +1,26 @@
 import TableItem from './tableItem';
 
-export default function ResultsTable({ items }) {
+export default function ResultsTable({ items, pageObject }) {
   if (Array.isArray(items) && items.length > 0) {
+    if (pageObject.sorting === 'procentage_change') {
+      items.sort((a, b) => {
+        return b.pricing.procentage_change - a.pricing.procentage_change;
+      });
+    }
+
+    if (pageObject.sorting === 'cheapest') {
+      items.sort((a, b) => {
+        return a.pricing.price - b.pricing.price;
+      });
+    }
+
+    const startAmount = Math.round(parseInt(pageObject.page) * parseInt(pageObject.amountprpage));
+    const endAmount = Math.round(
+      parseInt(pageObject.page) * parseInt(pageObject.amountprpage) + parseInt(pageObject.amountprpage)
+    );
+
+    items = items.slice(startAmount, endAmount);
+
     return (
       <table>
         <thead>
