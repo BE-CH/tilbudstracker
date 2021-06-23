@@ -14,6 +14,12 @@ export default function ResultsTable({ items, pageObject }) {
       });
     }
 
+    if (pageObject.sorting === 'expensivest') {
+      items.sort((a, b) => {
+        return b.pricing.price - a.pricing.price;
+      });
+    }
+
     const startAmount = Math.round(parseInt(pageObject.page) * parseInt(pageObject.amountprpage));
     const endAmount = Math.round(
       parseInt(pageObject.page) * parseInt(pageObject.amountprpage) + parseInt(pageObject.amountprpage)

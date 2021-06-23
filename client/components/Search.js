@@ -10,8 +10,16 @@ export default function Search() {
 
   return (
     <div className={styles.searchContainer}>
-      <input type="text" placeholder="Find tilbud"></input>
+      <input type="text" onChange={onChange} placeholder="Find tilbud"></input>
       <button>Søg</button>
     </div>
   );
+}
+
+function onChange(e) {
+  const value = e.target.value;
+  const lastLetter = value[value.length - 1];
+  if (lastLetter !== ' ' && lastLetter !== '.' && lastLetter !== '-' && lastLetter !== ',') {
+    alert(`'${value}'`);
+  }
 }
