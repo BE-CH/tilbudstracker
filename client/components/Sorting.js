@@ -6,9 +6,9 @@ export default function Sorting({ pageObject }) {
     <div>
       <p className={styles.title}>Sorting: </p>
       <select name="sorting" onChange={(e) => onChange(e, pageObject)} id="sorting" className={styles.select}>
-        <option value="procentage_change">Procentage Change</option>
-        <option value="cheapest">Cheapest</option>
-        <option value="expensivest">Most expensive</option>
+        <option value="procentage_change">Størst bestparelse</option>
+        <option value="cheapest">Billigst</option>
+        <option value="expensivest">Dyrest</option>
       </select>
     </div>
   );

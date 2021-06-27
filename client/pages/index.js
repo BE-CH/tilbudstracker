@@ -15,11 +15,11 @@ export default function Home() {
   const router = useRouter();
   const { data, error } = useSWR(`http://localhost:3000/api/getoffers`, fetcher);
 
-  const [pageObject, setPageObject] = useState({
+  let pageObject = {
     page: 0,
     amountprpage: 20,
     sorting: 'procentage_change',
-  });
+  };
 
   const page = parseInt(router.query.page);
   const amountprpage = parseInt(router.query.amountprpage);
@@ -27,37 +27,22 @@ export default function Home() {
   const search = router.query.search;
 
   if (page && page > 0) {
-    setPageObject({
-      page: page,
-      amountprpage: pageObject.amountprpage,
-      sorting: pageObject.sorting,
-    });
+    pageObject.page = page;
   }
 
   if (amountprpage && amountprpage > 0) {
-    setPageObject({
-      page: pageObject.page,
-      amountprpage: amountprpage,
-      sorting: pageObject.sorting,
-    });
+    pageObject.amountprpage = amountprpage;
   }
 
-  if (sorting && sorting !== 'undefined' && sorting !== 'null' && sorting.length < 3) {
-    setPageObject({
-      page: pageObject.page,
-      amountprpage: pageObject.amountprpage,
-      sorting: sorting,
-    });
+  if (sorting && sorting !== 'undefined' && sorting !== 'null' && sorting.length > 3) {
+    pageObject.sorting = sorting;
   }
 
   if (search && search !== 'null') {
-    setPageObject({
-      page: pageObject.page,
-      amountprpage: pageObject.amountprpage,
-      sorting: pageObject.sorting,
-      search: search,
-    });
+    pageObject.search = search;
   }
+
+  console.log(pageObject);
 
   return (
     <>

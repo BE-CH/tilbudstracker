@@ -2,6 +2,7 @@ import TableItem from './tableItem';
 
 export default function ResultsTable({ items, pageObject }) {
   if (Array.isArray(items) && items.length > 0) {
+    console.log(pageObject);
     if (pageObject.sorting === 'procentage_change') {
       items.sort((a, b) => {
         return b.pricing.procentage_change - a.pricing.procentage_change;
