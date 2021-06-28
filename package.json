@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A tracker that tracks all tilbuds",
   "engines": {
-    "yarn": "~2.4.2"
+    "node": "~16.3.0",
+    "pnpm": "~6.9.1"
   },
   "private": true,
   "workspaces": [
