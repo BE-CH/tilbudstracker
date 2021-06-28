@@ -3,7 +3,7 @@
   "description": "The API behind the tilbudstracker.",
   "engines": {
     "node": "~16.3.0",
-    "yarn": "~2.4.2"
+    "yarn": "^2.4.2"
   },
   "private": true,
   "version": "1.0.0",
