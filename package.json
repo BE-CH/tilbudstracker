@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "startDev": "concurrently \"cd ./api && yarn startServerDev\" \"cd ./client && yarn startClientDev\"",
+    "startProd": "concurrently \"cd ./api && yarn startServer\" \"cd ./client && yarn startClient\""
+  }
+}
