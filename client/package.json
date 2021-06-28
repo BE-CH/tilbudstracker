@@ -14,7 +14,8 @@
   "scripts": {
     "startClientDev": "next dev -p 4000",
     "buildClient": "next build",
-    "startClient": "next start -p 4000"
+    "exportClient": "next export",
+    "startClient": "next start"
   },
   "repository": {
     "type": "git",
