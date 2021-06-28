@@ -11,7 +11,7 @@
   },
   "scripts": {
     "startClientDev": "next dev -p 4000",
-    "buildClient": "next build -p 4000",
+    "buildClient": "next build",
     "startClient": "next start -p 4000"
   },
   "license": "ISC"

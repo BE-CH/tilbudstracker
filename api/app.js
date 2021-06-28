@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+require('dotenv').config();
 const helmet = require('helmet');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
