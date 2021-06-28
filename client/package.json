@@ -3,10 +3,6 @@
   "description": "NEXTJS Frontend for the tilbudstracker",
   "version": "1.0.0",
   "private": true,
-  "engines": {
-    "node": "~16.3.0",
-    "yarn": "~2.4.2"
-  },
   "dependencies": {
     "fuse.js": "^6.4.6",
     "next": "10.2.3",
