@@ -31,6 +31,7 @@ module.exports = getAllOffers = (type, amount) => {
                       popularity: item.popularity,
                       imageurl: item.imageurl,
                       pricing: item.pricing,
+                      url: item.url,
                     };
                   });
 
@@ -79,11 +80,13 @@ getAllItems = (type, amount) => {
     const promises = [];
 
     if (type === 'rema' || type === 'all') {
+      console.log('-> Getting REMA offers');
       promises.push(getRemaOffers(amount));
     }
 
-    if (type === 'foetex' || type === 'all') {
-      console.log('get foetex');
+    if (type === 'coop' || type === 'all') {
+      console.log('-> Getting COOP offers');
+      promises.push(getCoopOffers(amount));
     }
 
     Promise.allSettled(promises).then((result) => {
@@ -216,8 +219,9 @@ getRemaOffers = (amount) => {
                     category_id: item.category_id,
                     category_name: item.category_name,
                     popularity: item.extra.popularity,
-                    imageurl: item.image_url,
+                    imageurl: `https://cphapp.rema1000.dk/api/v1${item.image_url}`,
                     pricing: item.pricing,
+                    url: `https://shop.rema1000.dk/varer/${item.id}`,
                   };
 
                   itemObject.pricing.procentage_change =
@@ -235,6 +239,81 @@ getRemaOffers = (amount) => {
       })
       .catch(function (error) {
         console.error('ERROR GETTING REMA OFFERS:', error.response.data.message);
+        reject(new Error(error.response.data.message));
+      });
+  });
+};
+
+getCoopOffers = (amount) => {
+  return new Promise((resolve, reject) => {
+    var options = {
+      method: 'GET',
+      url: 'https://mad.coop.dk/api/search/search',
+      params: {
+        categories: '',
+        excludeCategories: '307',
+        lastFacet: 'offers',
+        offers: ['3', '6'],
+        pageSize: '9999',
+        sortBy: '',
+        term: '',
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        const responseData = response.data;
+        const responseProducts = responseData.products;
+        const items = [];
+
+        if (responseProducts) {
+          responseProducts.forEach((item) => {
+            if (item.hasOffer) {
+              if (items.length < amount || amount === 'all') {
+                const itemObject = {
+                  id: item.id,
+                  name: item.displayName,
+                  url: `https://mad.coop.dk${item.url}`,
+                  store: 'COOP',
+                  underline: item.spotText,
+                  description: 'No description',
+                  department_id: -1,
+                  department_name: 'No department',
+                  category_id: -1,
+                  category_name: item.category,
+                  popularity: -1,
+                  imageurl: item.image,
+                  pricing: {
+                    price: item.salesPrice.amount,
+                    max_quantity: item.maxQuantity,
+                    price_over_max: 0,
+                    is_on_discount: true,
+                    normal_price: item.salesPrice.amount + item.discountLabel.saved.amount,
+                    price_per_kilogram: -1,
+                    price_per_unit: item.pricePerUnitText,
+                    price_changes_on: 'No date',
+                    is_advertised: true,
+                  },
+                };
+
+                itemObject.pricing.procentage_change =
+                  ((itemObject.pricing.normal_price - itemObject.pricing.price) / itemObject.pricing.normal_price) *
+                  100;
+
+                items.push(itemObject);
+              }
+            }
+          });
+
+          resolve(items);
+        } else {
+          reject(new Error('We could not get any products'));
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        console.error('ERROR GETTING COOP OFFERS:', error.response.data.message);
         reject(new Error(error.response.data.message));
       });
   });

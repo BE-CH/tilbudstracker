@@ -22,22 +22,24 @@ export default function ResultsTable({ items, pageObject }) {
       });
     }
 
-    if (pageObject.sorting === 'procentage_change') {
-      items.sort((a, b) => {
-        return b.pricing.procentage_change - a.pricing.procentage_change;
-      });
-    }
+    if (!pageObject.search || pageObject.search === '') {
+      if (pageObject.sorting === 'procentage_change') {
+        items.sort((a, b) => {
+          return b.pricing.procentage_change - a.pricing.procentage_change;
+        });
+      }
 
-    if (pageObject.sorting === 'cheapest') {
-      items.sort((a, b) => {
-        return a.pricing.price - b.pricing.price;
-      });
-    }
+      if (pageObject.sorting === 'cheapest') {
+        items.sort((a, b) => {
+          return a.pricing.price - b.pricing.price;
+        });
+      }
 
-    if (pageObject.sorting === 'expensivest') {
-      items.sort((a, b) => {
-        return b.pricing.price - a.pricing.price;
-      });
+      if (pageObject.sorting === 'expensivest') {
+        items.sort((a, b) => {
+          return b.pricing.price - a.pricing.price;
+        });
+      }
     }
 
     if (items.length < pageObject.amountprpage) {

@@ -11,6 +11,7 @@ const itemSchema = new mongoose.Schema({
   category_id: Number,
   category_name: String,
   popularity: Number,
+  url: String,
   imageurl: String,
   pricing: {
     price: Number,

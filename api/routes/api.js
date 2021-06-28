@@ -8,10 +8,9 @@ router.get('/', function (req, res, next) {
 
 // todo please add database stuff.
 router.get('/getoffers', (req, res, next) => {
-  let { page, amountprpage } = req.query;
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  getAllOffers('rema', 'all').then((result) => {
+  getAllOffers('all', 'all').then((result) => {
     if (result.length > 0) {
       res.status(200).jsonp({ status: 200, itemsAmount: result.length, items: result, message: 'Items found' });
     } else {

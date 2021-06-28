@@ -7,7 +7,7 @@ export default function TableItem({ itemObject }) {
       <td className={styles.imageTD}>
         <div className={styles.image}>
           <Image
-            src={`https://cphapp.rema1000.dk/api/v1${itemObject.imageurl}`}
+            src={`${itemObject.imageurl}&format=png&quality=75&width=200&height=200`}
             objectFit="contain"
             layout="fill"
           ></Image>
@@ -41,16 +41,20 @@ export default function TableItem({ itemObject }) {
         </p>
       </td>
       <td className={styles.linkTD}>
-        <div>
-          <a href={`https://shop.rema1000.dk/varer/${itemObject.itemID}`} target="_blank">
-            Rema 1000
-          </a>
-        </div>
-        <div>
-          <a href="https://hjem.foetex.dk/produkt/skummetmaelk-01-fedt/93002100001-ea" target="_blank">
-            Føtex
-          </a>
-        </div>
+        {itemObject.store === 'rema1000' && (
+          <div>
+            <a href={itemObject.url} target="_blank">
+              Rema 1000
+            </a>
+          </div>
+        )}
+        {itemObject.store === 'COOP' && (
+          <div>
+            <a href={itemObject.url} target="_blank">
+              COOP
+            </a>
+          </div>
+        )}
       </td>
     </tr>
   );
