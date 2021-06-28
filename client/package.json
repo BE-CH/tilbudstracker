@@ -1,6 +1,12 @@
 {
-  "name": "client",
+  "name": "tilbudstracker-client",
+  "description": "NEXTJS Frontend for the tilbudstracker",
   "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "~16.3.0",
+    "yarn": "~2.4.2"
+  },
   "dependencies": {
     "fuse.js": "^6.4.6",
     "next": "10.2.3",
@@ -14,5 +20,14 @@
     "buildClient": "next build",
     "startClient": "next start -p 4000"
   },
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BE-CH/tilbudstracker.git"
+  },
+  "author": "Mikkel Bech @ Bech Solutions",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BE-CH/tilbudstracker/issues"
+  },
+  "homepage": "https://github.com/BE-CH/tilbudstracker#readme"
 }
