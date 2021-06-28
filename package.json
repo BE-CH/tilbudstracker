@@ -7,12 +7,9 @@
     "api",
     "client"
   ],
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  },
   "scripts": {
-    "startDev": "yarn workspace api startServerDev && yarn workspace client startClientDev",
-    "startProd": "yarn workspace api startServer && yarn workspace client startClient"
+    "startDev": "concurrently \"yarn workspace api startServerDev\" \"yarn workspace client startClientDev\"",
+    "startProd": "concurrently \"yarn workspace api startServer\" \"yarn workspace client startClient\""
   },
   "repository": {
     "type": "git",
@@ -23,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/BE-CH/tilbudstracker/issues"
   },
-  "homepage": "https://github.com/BE-CH/tilbudstracker#readme"
+  "homepage": "https://github.com/BE-CH/tilbudstracker#readme",
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
 }
