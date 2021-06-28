@@ -1,25 +1,29 @@
 import styles from '../styles/Search.module.scss';
-import { useState } from 'react';
+import router from 'next/router';
 
-export default function Search() {
-  const [query, setQuery] = useState('');
-  const [active, setActive] = useState(false);
-  const [results, setResults] = useState([]);
-
-  // on change functionality here
-
+export default function Search({ pageObject }) {
   return (
     <div className={styles.searchContainer}>
-      <input type="text" onChange={onChange} placeholder="Find tilbud"></input>
+      <input type="text" onChange={(e) => onChange(e, pageObject)} placeholder="Find tilbud"></input>
       <button>Søg</button>
     </div>
   );
 }
 
-function onChange(e) {
+function onChange(e, pageObject) {
   const value = e.target.value;
   const lastLetter = value[value.length - 1];
   if (lastLetter !== ' ' && lastLetter !== '.' && lastLetter !== '-' && lastLetter !== ',') {
-    alert(`'${value}'`);
+    pageObject.search = value;
+    router.push(`/?${serialize(pageObject)}`);
   }
+}
+
+function serialize(obj) {
+  var str = [];
+  for (var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+    }
+  return str.join('&');
 }

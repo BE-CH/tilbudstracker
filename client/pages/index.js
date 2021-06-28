@@ -42,8 +42,6 @@ export default function Home() {
     pageObject.search = search;
   }
 
-  console.log(pageObject);
-
   return (
     <>
       <Header></Header>
@@ -54,7 +52,7 @@ export default function Home() {
           <div className={styles.descriptionContainer}>
             <PageNavigation pageObject={pageObject}></PageNavigation>
             <Sorting pageObject={pageObject}></Sorting>
-            <Search></Search>
+            <Search pageObject={pageObject}></Search>
           </div>
 
           <div className={styles.itemsContainer}>

@@ -1,8 +1,27 @@
 import TableItem from './tableItem';
+import Fuse from 'fuse.js';
 
 export default function ResultsTable({ items, pageObject }) {
   if (Array.isArray(items) && items.length > 0) {
-    console.log(pageObject);
+    const originalItems = [...items];
+    const fuse = new Fuse(originalItems, {
+      includeScore: true,
+      keys: [
+        { name: 'name', weight: 3 },
+        { name: 'description', weight: 1 },
+      ],
+    });
+
+    if (pageObject.search) {
+      const resultOfSearch = fuse.search(pageObject.search);
+      items = [];
+      resultOfSearch.forEach((element) => {
+        if (element.score < 0.75) {
+          items.push(element.item);
+        }
+      });
+    }
+
     if (pageObject.sorting === 'procentage_change') {
       items.sort((a, b) => {
         return b.pricing.procentage_change - a.pricing.procentage_change;
@@ -19,6 +38,10 @@ export default function ResultsTable({ items, pageObject }) {
       items.sort((a, b) => {
         return b.pricing.price - a.pricing.price;
       });
+    }
+
+    if (items.length < pageObject.amountprpage) {
+      pageObject.page = 0;
     }
 
     const startAmount = Math.round(parseInt(pageObject.page) * parseInt(pageObject.amountprpage));
