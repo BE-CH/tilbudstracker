@@ -13,7 +13,7 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Home() {
   const router = useRouter();
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/getoffers`, fetcher);
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/getoffers`, fetcher);
 
   let pageObject = {
     page: 0,
