@@ -157,10 +157,10 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,react
 
 
-.yarn/*
-!.yarn/patches
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
+**/.yarn/*
+!**/.yarn/patches
+!**/.yarn/releases
+!**/.yarn/plugins
+!**/.yarn/sdks
+!**/.yarn/versions
+**/.pnp.*

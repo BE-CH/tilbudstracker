@@ -1,5 +1,11 @@
 {
-  "name": "api",
+  "name": "tilbudstracker-api",
+  "description": "The API behind the tilbudstracker.",
+  "engines": {
+    "node": "~16.3.0",
+    "yarn": "~2.4.2"
+  },
+  "private": true,
   "version": "1.0.0",
   "dependencies": {
     "axios": "^0.21.1",
@@ -16,5 +22,14 @@
     "startServer": "node ./bin/www",
     "startServerDev": "nodemon ./bin/www"
   },
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BE-CH/tilbudstracker.git"
+  },
+  "author": "Mikkel Bech @ Bech Solutions",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BE-CH/tilbudstracker/issues"
+  },
+  "homepage": "https://github.com/BE-CH/tilbudstracker#readme"
 }
