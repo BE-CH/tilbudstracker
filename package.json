@@ -4,13 +4,13 @@
   "description": "A tracker that tracks all tilbuds",
   "engines": {
     "node": "~16.3.0",
-    "pnpm": "~6.9.1"
+    "yarn": "~2.4.2"
   },
-  "private": true,
   "workspaces": [
-    "api",
-    "client"
+    "client",
+    "api"
   ],
+  "private": true,
   "scripts": {
     "startDev": "concurrently \"yarn workspace api startServerDev\" \"yarn workspace client startClientDev\"",
     "startProd": "concurrently \"yarn workspace api startServer\" \"yarn workspace client startClient\""
