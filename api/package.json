@@ -1,9 +1,6 @@
 {
   "name": "tilbudstracker-api",
   "description": "The API behind the tilbudstracker.",
-  "engines": {
-    "yarn": "^2.4.2"
-  },
   "private": true,
   "version": "1.0.0",
   "dependencies": {
