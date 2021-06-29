@@ -1,8 +1,17 @@
 import TableItem from './tableItem';
 import Fuse from 'fuse.js';
+import styles from '../styles/ResultsTable.module.scss';
 
 export default function ResultsTable({ items, pageObject }) {
   if (Array.isArray(items) && items.length > 0) {
+    if (pageObject.store !== 'all') {
+      items = items.filter((val) => {
+        if (val.store.toLowerCase() === pageObject.store.toLowerCase()) {
+          return val;
+        }
+      });
+    }
+
     const originalItems = [...items];
     const fuse = new Fuse(originalItems, {
       includeScore: true,
@@ -54,12 +63,12 @@ export default function ResultsTable({ items, pageObject }) {
     items = items.slice(startAmount, endAmount);
 
     return (
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Billede</th>
             <th>Produkt</th>
-            <th>Mærke</th>
+            <th className={styles.brandTH}>Mærke</th>
             <th>Pris</th>
             <th>Normalpris</th>
             <th>Besparelse</th>

@@ -10,11 +10,17 @@
   li {
     display: inline;
     margin-left: 35px;
+    a {
+      color: white;
+    }
   }
 }
 
 .logo {
   color: white;
+  a {
+    color: white;
+  }
   p {
     font-size: 30px;
   }
@@ -30,9 +36,34 @@
   padding-top: 20px;
   padding-bottom: 20px;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .header {
   width: 100%;
   background-color: #212121;
+}
+
+$breakpoint-mobileM: 375px;
+
+@media (max-width: $breakpoint-mobileM) {
+  .innerHeader {
+    justify-content: center;
+    width: 95%;
+  }
+
+  .logoItems {
+    margin-top: 15px;
+    width: 100%;
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li {
+      text-align: center;
+      font-size: 15px;
+      margin-left: 0px;
+    }
+  }
 }

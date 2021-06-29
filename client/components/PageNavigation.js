@@ -10,21 +10,25 @@ export default function PageNavigation({ pageObject }) {
   if (pageObject.page > 0) {
     return (
       <div className={styles.pageContainer}>
-        <div>
-          <Link href={`/?${serialize(previousPageObject)}`}>&lt; Forrige side </Link>
-        </div>
-        <div>Nuværende side: {pageObject.page}</div>
-        <div>
-          <Link href={`/?${serialize(nextPageObject)}`}>Næste side &gt;</Link>
+        <div className={styles.innerContainer}>
+          <div>
+            <Link href={`/?${serialize(previousPageObject)}`}>&lt; Forrige side </Link>
+          </div>
+          <div>Side: {pageObject.page}</div>
+          <div>
+            <Link href={`/?${serialize(nextPageObject)}`}>Næste side &gt;</Link>
+          </div>
         </div>
       </div>
     );
   } else {
     return (
       <div className={styles.pageContainer}>
-        <div>Nuværende side: {pageObject.page}</div>
-        <div>
-          <Link href={`/?${serialize(nextPageObject)}`}>Næste side &gt;</Link>
+        <div className={styles.innerContainer}>
+          <div>Side: {pageObject.page}</div>
+          <div>
+            <Link href={`/?${serialize(nextPageObject)}`}>Næste side &gt;</Link>
+          </div>
         </div>
       </div>
     );

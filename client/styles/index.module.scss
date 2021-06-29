@@ -14,6 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  align-items: center;
   margin-top: 15px;
 }
 
@@ -56,5 +57,29 @@
     font-size: 30px;
     color: red;
     font-weight: bold;
+  }
+}
+
+$breakpoint-mobileM: 375px;
+
+@media (max-width: $breakpoint-mobileM) {
+  .innerBody {
+    width: 95%;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .itemsContainer {
+    width: 98%;
+  }
+
+  .descriptionContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    div {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
   }
 }

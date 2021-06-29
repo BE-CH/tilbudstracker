@@ -17,3 +17,15 @@
     color: white;
   }
 }
+
+$breakpoint-mobileM: 375px;
+
+@media (max-width: $breakpoint-mobileM) {
+  .innerFooter {
+    width: 99%;
+
+    p {
+      font-size: 12px;
+    }
+  }
+}

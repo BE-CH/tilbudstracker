@@ -34,3 +34,38 @@
     max-width: 500px;
   }
 }
+
+$breakpoint-mobileM: 375px;
+
+@media (max-width: $breakpoint-mobileM) {
+  .brandTD {
+    display: none;
+  }
+
+  .pricePrUnit {
+    display: none;
+  }
+
+  .productTD {
+    p {
+      text-overflow: ellipsis;
+    }
+  }
+
+  .singleItem {
+    .imageTD {
+      width: auto;
+    }
+
+    .image {
+      display: block;
+      height: 100%;
+      text-align: right;
+      margin-right: 0px;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+}

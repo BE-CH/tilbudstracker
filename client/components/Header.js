@@ -1,25 +1,25 @@
 import styles from '../styles/Header.module.scss';
+import Link from 'next/link';
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.innerHeader}>
         <div className={styles.logo}>
-          <p>TilbudsTracker</p>
+          <p>
+            <Link href="/">TilbudsTracker</Link>
+          </p>
         </div>
         <div className={styles.logoItems}>
           <ul>
             <li>
-              <a href="#home">Home</a>
+              <Link href="/">Forside</Link>
             </li>
             <li>
-              <a href="#news">News</a>
+              <Link href="/myfavorites">Mine favoritter</Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
-            </li>
-            <li>
-              <a href="#about">About</a>
+              <Link href="/requestfeature">Foreslå en funktion</Link>
             </li>
           </ul>
         </div>

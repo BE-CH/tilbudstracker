@@ -10,5 +10,49 @@
 .title {
   display: inline-block;
   vertical-align: middle;
-  margin-right: 5px;
+}
+
+.container {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  box-sizing: border-box;
+
+  div {
+    width: 48%;
+
+    select {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    p {
+      text-align: center;
+      width: 100%;
+      margin: 0px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+$breakpoint-mobileM: 375px;
+
+@media (max-width: $breakpoint-mobileM) {
+  .container {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    div {
+      width: 100%;
+      select {
+        width: 100%;
+      }
+      p {
+        margin-bottom: 5px;
+        width: 20%;
+      }
+    }
+  }
 }

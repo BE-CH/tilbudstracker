@@ -26,3 +26,11 @@
     width: 28%;
   }
 }
+
+$breakpoint-mobileM: 375px;
+
+@media (max-width: $breakpoint-mobileM) {
+  .searchContainer {
+    width: 100%;
+  }
+}

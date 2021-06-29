@@ -1,13 +1,33 @@
-.pageContainer div {
-  background-color: rgb(56, 56, 56);
-  color: white;
-  padding: 10px;
-  box-sizing: border-box;
-  display: inline-block;
-  border-radius: 5px;
-  margin-right: 10px;
+.pageContainer {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  a {
-    color: white;
+  .innerContainer {
+    margin-left: auto;
+    margin-right: auto;
+
+    div {
+      background-color: rgb(56, 56, 56);
+      color: white;
+      padding: 10px;
+      box-sizing: border-box;
+      display: inline-block;
+      border-radius: 5px;
+      margin-right: 10px;
+
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+$breakpoint-mobileM: 375px;
+
+@media (max-width: $breakpoint-mobileM) {
+  .pageContainer {
+    width: 100%;
   }
 }

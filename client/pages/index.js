@@ -2,7 +2,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/index.module.scss';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import ResultsTable from '../components/ResultsTable';
 import useSWR from 'swr';
 import Search from '../components/Search';
@@ -19,12 +18,14 @@ export default function Home() {
     page: 0,
     amountprpage: 20,
     sorting: 'procentage_change',
+    store: 'all',
   };
 
   const page = parseInt(router.query.page);
   const amountprpage = parseInt(router.query.amountprpage);
   const sorting = router.query.sorting;
   const search = router.query.search;
+  const store = router.query.store;
 
   if (page && page > 0) {
     pageObject.page = page;
@@ -40,6 +41,10 @@ export default function Home() {
 
   if (search && search !== 'null') {
     pageObject.search = search;
+  }
+
+  if (store && store !== 'null') {
+    pageObject.store = store;
   }
 
   return (
