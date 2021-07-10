@@ -1,11 +1,12 @@
 import styles from '../styles/tableItem.module.scss';
+import Image from 'next/image';
 
 export default function TableItem({ itemObject }) {
   return (
     <tr className={styles.singleItem}>
       <td data-label="Billede" className={styles.imageTD}>
         <div className={styles.image}>
-          <img src={`${itemObject.imageurl}`}></img>
+          <Image src={itemObject.imageurl} objectFit="contain" layout="fill"></Image>
         </div>
       </td>
       <td data-label="Produkt" className={styles.productTD}>
