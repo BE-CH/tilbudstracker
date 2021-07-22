@@ -289,7 +289,9 @@ getCoopOffers = (amount) => {
                     max_quantity: item.maxQuantity,
                     price_over_max: 0,
                     is_on_discount: true,
-                    normal_price: item.salesPrice.amount + item.discountLabel.saved.amount,
+                    normal_price: item.salesPrice.amount
+                      ? item.salesPrice.amount + item.discountLabel.saved.amount
+                      : -1,
                     price_per_kilogram: -1,
                     price_per_unit: item.pricePerUnitText,
                     price_changes_on: 'No date',
@@ -313,8 +315,8 @@ getCoopOffers = (amount) => {
       })
       .catch(function (error) {
         console.log(error);
-        console.error('ERROR GETTING COOP OFFERS:', error.response.data.message);
-        reject(new Error(error.response.data.message));
+        console.error('ERROR GETTING COOP OFFERS:', error.response);
+        reject(new Error(error.response));
       });
   });
 };
