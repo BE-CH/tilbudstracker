@@ -269,8 +269,18 @@ getCoopOffers = (amount) => {
 
         if (responseProducts) {
           responseProducts.forEach((item) => {
-            if (item.hasOffer) {
+            if (item.hasOffer && item.discountLabel) {
               if (items.length < amount || amount === 'all') {
+                let correctNormalPrice = -1;
+
+                if (item.discountLabel.saved) {
+                  correctNormalPrice = item.salesPrice.amount + item.discountLabel.saved.amount;
+                }
+
+                if (item.discountLabel.savedPercentage) {
+                  correctNormalPrice = item.salesPrice.amount / (1 - item.discountLabel.savedPercentage.amount / 100);
+                }
+
                 const itemObject = {
                   id: item.id,
                   name: item.displayName,
@@ -289,9 +299,7 @@ getCoopOffers = (amount) => {
                     max_quantity: item.maxQuantity,
                     price_over_max: 0,
                     is_on_discount: true,
-                    normal_price: item.salesPrice.amount
-                      ? item.salesPrice.amount + item.discountLabel.saved.amount
-                      : -1,
+                    normal_price: correctNormalPrice,
                     price_per_kilogram: -1,
                     price_per_unit: item.pricePerUnitText,
                     price_changes_on: 'No date',
