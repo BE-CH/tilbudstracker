@@ -16,10 +16,18 @@ $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 $breakpoint-laptop-large: 1440px;
 
-@media (max-width: $breakpoint-phone) {
+@media (max-width: $breakpoint-laptop-large) {
   .searchContainer {
     input {
-      width: 95%;
+      width: 30%;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-laptop) {
+  .searchContainer {
+    input {
+      width: 50%;
     }
   }
 }
@@ -32,17 +40,10 @@ $breakpoint-laptop-large: 1440px;
   }
 }
 
-@media (max-width: $breakpoint-laptop) {
+@media (max-width: $breakpoint-phone) {
   .searchContainer {
     input {
-      width: 50%;
-    }
-  }
-}
-@media (max-width: $breakpoint-laptop-large) {
-  .searchContainer {
-    input {
-      width: 30%;
+      width: 95%;
     }
   }
 }

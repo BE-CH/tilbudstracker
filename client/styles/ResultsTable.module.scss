@@ -15,9 +15,9 @@ $breakpoint-phone: 425px;
 $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 
-@media (max-width: $breakpoint-phone) {
+@media (max-width: $breakpoint-laptop) {
   .container {
-    width: 95%;
+    width: 90%;
   }
 }
 
@@ -27,8 +27,8 @@ $breakpoint-laptop: 1024px;
   }
 }
 
-@media (max-width: $breakpoint-laptop) {
+@media (max-width: $breakpoint-phone) {
   .container {
-    width: 90%;
+    width: 95%;
   }
 }

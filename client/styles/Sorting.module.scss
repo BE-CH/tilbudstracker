@@ -36,15 +36,9 @@ $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 $breakpoint-laptop-large: 1440px;
 
-@media (max-width: $breakpoint-phone) {
+@media (max-width: $breakpoint-laptop-large) {
   .innerContainer {
-    width: 95%;
-  }
-}
-
-@media (max-width: $breakpoint-tablet) {
-  .innerContainer {
-    width: 80%;
+    width: 30%;
   }
 }
 
@@ -54,8 +48,14 @@ $breakpoint-laptop-large: 1440px;
   }
 }
 
-@media (max-width: $breakpoint-laptop-large) {
+@media (max-width: $breakpoint-tablet) {
   .innerContainer {
-    width: 30%;
+    width: 80%;
+  }
+}
+
+@media (max-width: $breakpoint-phone) {
+  .innerContainer {
+    width: 95%;
   }
 }
