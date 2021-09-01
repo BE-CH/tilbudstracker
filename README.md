@@ -1,7 +1,7 @@
 # Tilbudstracker.dk ⚡
 Simple website to track and showcase good discounts/offers on groceries from Danish stores such as Rema 100 and COOP.
 
-Live site: https://www.tilbudstracker.dk/
+**Live site: https://www.tilbudstracker.dk/**
 
 *Made by Mikkel Bech @ https://www.bechsolutions.dk/*
 
