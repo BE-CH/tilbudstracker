@@ -5,6 +5,7 @@ Live site: https://www.tilbudstracker.dk/
 
 *Made by Mikkel Bech @ https://www.bechsolutions.dk/*
 
+![preview of tilbudstracker](https://github.com/BE-CH/tilbudstracker/blob/master/preview-of-site.png?raw=true)
 
 ## About the project
 The project is split into two parts; one for the ``api`` and one for the ``client``. 
