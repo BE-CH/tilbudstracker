@@ -63,24 +63,13 @@ export default function ResultsTable({ items, pageObject }) {
     items = items.slice(startAmount, endAmount);
 
     return (
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Billede</th>
-            <th>Produkt</th>
-            <th className={styles.brandTH}>Mærke</th>
-            <th>Pris</th>
-            <th>Normalpris</th>
-            <th>Besparelse</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className={styles.container}>
+        <div className={styles.innerContainer}>
           {items.map((item) => (
             <TableItem key={item.itemID} itemObject={item}></TableItem>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     );
   } else {
     return (

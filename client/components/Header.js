@@ -7,16 +7,16 @@ export default function Header() {
       <div className={styles.innerHeader}>
         <div className={styles.logo}>
           <p>
-            <Link href="/">TilbudsTracker</Link>
+            <Link href="/">TILBUDSTRACKER</Link>
           </p>
         </div>
         <div className={styles.logoItems}>
           <ul>
             <li>
-              <Link href="/">Forside</Link>
+              <Link href="/myfavorites">Mine favoritter</Link>
             </li>
             <li>
-              <Link href="/myfavorites">Mine favoritter</Link>
+              <Link href="/">Forside</Link>
             </li>
             <li>
               <Link href="/requestfeature">Foreslå en funktion</Link>

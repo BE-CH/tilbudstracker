@@ -3,55 +3,31 @@ import Image from 'next/image';
 
 export default function TableItem({ itemObject }) {
   return (
-    <tr className={styles.singleItem}>
-      <td data-label="Billede" className={styles.imageTD}>
-        <div className={styles.image}>
-          <Image src={itemObject.imageurl} objectFit="contain" layout="fill"></Image>
+    <div className={styles.container}>
+      <a href={itemObject.url} target="_blank">
+        <div className={styles.innerContainer}>
+          <div className={styles.storeImageContainer}>
+            <div className={styles.storeImage}>
+              <Image
+                src={itemObject.store === 'rema1000' ? '/images/Rema_1000_logo.png' : '/images/coop_logo.png'}
+                objectFit="contain"
+                layout="fill"
+              ></Image>
+            </div>
+          </div>
+
+          <div className={styles.image}>
+            <Image src={itemObject.imageurl} objectFit="contain" layout="fill"></Image>
+          </div>
+          <div className={styles.textContainer}>
+            <p className={styles.title}>{itemObject.name}</p>
+            <p className={styles.description}>{itemObject.underline}</p>
+            <p className={styles.oldPrice}>{itemObject.pricing.normal_price} DKK</p>
+            <p className={styles.currentPrice}>{itemObject.pricing.price} DKK</p>
+            <p className={styles.saveProcentage}>({itemObject.pricing.procentage_change.toFixed(2)}%)</p>
+          </div>
         </div>
-      </td>
-      <td data-label="Produkt" className={styles.productTD}>
-        <p>
-          {itemObject.name} ({itemObject.underline})
-        </p>
-      </td>
-      <td data-label="Mærke" className={styles.brandTD}>
-        <p>{itemObject.store}</p>
-      </td>
-      <td data-label="Pris" className={styles.priceTD}>
-        <p>
-          <span className={styles.green}>{itemObject.pricing.price} DKK</span>
-          <i className={styles.pricePrUnit}> ({itemObject.pricing.price_per_unit})</i>
-        </p>
-      </td>
-      <td data-label="Normalpris" className={styles.normalPriceTD}>
-        <p>
-          <span className={styles.red}>{itemObject.pricing.normal_price} DKK</span>
-        </p>
-      </td>
-      <td data-label="Besparelse" className={styles.savingsTD}>
-        <p>
-          <span className={styles.green}>
-            {(itemObject.pricing.normal_price - itemObject.pricing.price).toFixed(2)} DKK{' '}
-            <i>({itemObject.pricing.procentage_change.toFixed(2)}%)</i>
-          </span>
-        </p>
-      </td>
-      <td data-label="Links" className={styles.linkTD}>
-        {itemObject.store === 'rema1000' && (
-          <div>
-            <a href={itemObject.url} target="_blank">
-              Rema 1000
-            </a>
-          </div>
-        )}
-        {itemObject.store === 'COOP' && (
-          <div>
-            <a href={itemObject.url} target="_blank">
-              COOP
-            </a>
-          </div>
-        )}
-      </td>
-    </tr>
+      </a>
+    </div>
   );
 }

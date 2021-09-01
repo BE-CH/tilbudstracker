@@ -458,6 +458,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"moment-timezone@npm:^0.5.31":
+  version: 0.5.33
+  resolution: "moment-timezone@npm:0.5.33"
+  dependencies:
+    moment: ">= 2.9.0"
+  checksum: d4e72a3514a2885ab26b1cbc640e2f4785c997f9de28bb48bf3994ef137b0a560ca8f07eb07f11121e1223eef0c3bce4bc647b911111481a6a066bbc61285f99
+  languageName: node
+  linkType: hard
+
+"moment@npm:>= 2.9.0":
+  version: 2.29.1
+  resolution: "moment@npm:2.29.1"
+  checksum: 86729013febf7160de5b93da69273dd304d674b0224f9544b3abd09a87671ddd2cdd57598261ce57588910d63747ffd5590965e83c790d8bf327083c0e0a06e0
+  languageName: node
+  linkType: hard
+
 "mongodb@npm:3.6.8":
   version: 3.6.8
   resolution: "mongodb@npm:3.6.8"
@@ -568,6 +584,15 @@ __metadata:
   version: 0.6.2
   resolution: "negotiator@npm:0.6.2"
   checksum: 4b230bd15f0862d16c54ce0243fcfcf835ad59c8e58c467b4504dd28c9868cff71ff485b02cc575dc69dca819b58a1fadc9fb28403f45721f38a8fffde007d54
+  languageName: node
+  linkType: hard
+
+"node-cron@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "node-cron@npm:3.0.0"
+  dependencies:
+    moment-timezone: ^0.5.31
+  checksum: a2fe998eeddec6e5c3f9e7af8b2169f9994842f7f86c8af756a6cfcf9025abca3a39bf6cc76a42922eb55eadb5345eace12fee68dde065e23211a857667e9561
   languageName: node
   linkType: hard
 
@@ -802,6 +827,7 @@ __metadata:
     helmet: ^4.6.0
     mongoose: ^5.12.14
     morgan: ~1.9.1
+    node-cron: ^3.0.0
   languageName: unknown
   linkType: soft
 

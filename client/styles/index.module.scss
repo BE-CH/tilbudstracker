@@ -1,85 +1,31 @@
+.body {
+  padding-top: 40px;
+}
+
 .innerBody {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-
-  h1 {
-    font-size: 30px;
-  }
-}
-
-.descriptionContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  align-items: center;
-  margin-top: 15px;
-}
-
-.pageContainerBottom {
-  text-align: right;
-  margin-top: 10px;
-}
-
-.itemsContainer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
   color: white;
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  td,
-  th {
-    border: 1px solid #dddddd;
-    background-color: rgb(56, 56, 56);
-    border-radius: 2px;
-    text-align: left;
-    padding: 8px;
-    vertical-align: middle;
-    box-sizing: border-box;
-  }
-
-  th {
-    font-weight: bold;
-  }
-
-  i {
-    font-style: italic;
-  }
-
-  .loadingText {
-    font-size: 30px;
-    color: red;
-    font-weight: bold;
-  }
-}
-
-$breakpoint-mobileM: 375px;
-
-@media (max-width: $breakpoint-mobileM) {
-  .innerBody {
-    width: 95%;
-    margin-top: 20px;
+  h1 {
     text-align: center;
+    font-size: 30px;
   }
 
-  .itemsContainer {
-    width: 98%;
+  .smallDescription {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
   }
 
   .descriptionContainer {
-    flex-wrap: wrap;
-    justify-content: center;
-
-    div {
-      margin-top: 5px;
-      margin-bottom: 5px;
-    }
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
   }
+}
+
+.pageContainerBottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

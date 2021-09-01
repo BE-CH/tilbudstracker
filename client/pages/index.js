@@ -52,12 +52,13 @@ export default function Home() {
       <Header></Header>
       <div className={styles.body}>
         <div className={styles.innerBody}>
-          <h1>De bedste tilbud</h1>
-          <p className={styles.smallDescription}>Her findes du dagens bedste tilbud.</p>
+          <h1>DE BEDSTE TILBUD</h1>
+          <p className={styles.smallDescription}>
+            Nedenstående kan du se dagens/ugens bedste tilbud fra forskellige dagligvarebutikker.
+          </p>
           <div className={styles.descriptionContainer}>
-            <PageNavigation pageObject={pageObject}></PageNavigation>
-            <Sorting pageObject={pageObject}></Sorting>
             <Search pageObject={pageObject}></Search>
+            <Sorting pageObject={pageObject}></Sorting>
           </div>
 
           <div className={styles.itemsContainer}>

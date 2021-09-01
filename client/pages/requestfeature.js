@@ -7,6 +7,15 @@ export default function requestFeature() {
       <Header></Header>
       <p>Work in progress...</p>
       <Footer></Footer>
+
+      <style jsx>{`
+        p {
+          color: white;
+          text-align: center;
+          margin-top: 35px;
+          margin-bottom: 35px;
+        }
+      `}</style>
     </>
   );
 }

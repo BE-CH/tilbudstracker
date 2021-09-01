@@ -1,74 +1,67 @@
 const axios = require('axios');
 const Item = require('../models/items');
+const cron = require('node-cron');
 
-module.exports = getAllOffers = (type, amount) => {
+console.log('-> Started auto-update database every 5 hours.');
+
+if (process.env.NODE_ENV === 'production') {
+  getAllOffers('all', 'all')
+    .then(() => {
+      console.log('-> Database updated at startup!');
+    })
+    .catch(() => {
+      console.error('-> There was an error updating the database at startup');
+    });
+}
+
+cron.schedule('0 0 */5 * * *', () => {
+  getAllOffers('all', 'all')
+    .then(() => {
+      console.log('-> Database has been updated!');
+    })
+    .catch(() => {
+      console.error('-> There was an error updating the database');
+    });
+});
+
+getAllOffers = (type, amount) => {
   return new Promise((resolve, reject) => {
-    Item.findOne({}, (err, foundItem) => {
+    Item.deleteMany({}, (err, removedObjects) => {
       if (!err) {
-        if (
-          !foundItem ||
-          (foundItem && (new Date().getTime() - new Date(foundItem.createdAt).getTime()) / 1000 >= 18000)
-        ) {
-          // No items found or older than 5 hours. Add everything
-          console.log('-> ITEMS NEED TO BE UPDATED');
+        getAllItems(type, amount)
+          .then((items) => {
+            const itemsArrayToUpdate = items.map((item) => {
+              return {
+                itemID: item.id,
+                createdAt: new Date(),
+                name: item.name,
+                store: item.store,
+                underline: item.underline,
+                description: item.description,
+                department_id: item.department_id,
+                department_name: item.department_name,
+                category_id: item.category_id,
+                category_name: item.category_name,
+                popularity: item.popularity,
+                imageurl: item.imageurl,
+                pricing: item.pricing,
+                url: item.url,
+              };
+            });
 
-          Item.deleteMany({}, (err, removedObjects) => {
-            if (!err) {
-              getAllItems(type, amount)
-                .then((items) => {
-                  const itemsArrayToUpdate = items.map((item) => {
-                    return {
-                      itemID: item.id,
-                      createdAt: new Date(),
-                      name: item.name,
-                      store: item.store,
-                      underline: item.underline,
-                      description: item.description,
-                      department_id: item.department_id,
-                      department_name: item.department_name,
-                      category_id: item.category_id,
-                      category_name: item.category_name,
-                      popularity: item.popularity,
-                      imageurl: item.imageurl,
-                      pricing: item.pricing,
-                      url: item.url,
-                    };
-                  });
-
-                  Item.insertMany(itemsArrayToUpdate, (err, insertedDocs) => {
-                    if (!err) {
-                      resolve(insertedDocs);
-                    } else {
-                      reject(err);
-                    }
-                  });
-                })
-                .catch((err) => {
-                  reject(err);
-                });
-            } else {
-              reject('We could not clear database');
-            }
-          });
-        } else {
-          // return items in database
-
-          if (amount === 'all') {
-            amount = 1000;
-          }
-
-          Item.find({})
-            .limit(amount)
-            .exec((err, foundItems) => {
-              if (!err && foundItems) {
-                resolve(foundItems);
+            Item.insertMany(itemsArrayToUpdate, (err, insertedDocs) => {
+              if (!err) {
+                resolve(insertedDocs);
               } else {
-                reject('We could not find the items in the database');
+                reject(err);
               }
             });
-        }
+          })
+          .catch((err) => {
+            reject(err);
+          });
       } else {
-        reject('We could query the database');
+        reject('We could not clear database');
       }
     });
   });

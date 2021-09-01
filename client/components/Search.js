@@ -1,11 +1,11 @@
 import styles from '../styles/Search.module.scss';
+import Image from 'next/image';
 import router from 'next/router';
 
 export default function Search({ pageObject }) {
   return (
     <div className={styles.searchContainer}>
-      <input type="text" onChange={(e) => onChange(e, pageObject)} placeholder="Find tilbud"></input>
-      <button>Søg</button>
+      <input type="text" onChange={(e) => onChange(e, pageObject)} placeholder="Søg efter varer"></input>
     </div>
   );
 }

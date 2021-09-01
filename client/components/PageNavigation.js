@@ -6,33 +6,23 @@ export default function PageNavigation({ pageObject }) {
   const previousPageObject = { ...pageObject };
   nextPageObject.page++;
   previousPageObject.page--;
-
-  if (pageObject.page > 0) {
-    return (
-      <div className={styles.pageContainer}>
-        <div className={styles.innerContainer}>
-          <div>
-            <Link href={`/?${serialize(previousPageObject)}`}>&lt; Forrige side </Link>
-          </div>
-          <div>Side: {pageObject.page}</div>
-          <div>
-            <Link href={`/?${serialize(nextPageObject)}`}>Næste side &gt;</Link>
-          </div>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className={styles.pageContainer}>
-        <div className={styles.innerContainer}>
-          <div>Side: {pageObject.page}</div>
-          <div>
-            <Link href={`/?${serialize(nextPageObject)}`}>Næste side &gt;</Link>
-          </div>
-        </div>
-      </div>
-    );
+  if (pageObject.page <= 0) {
+    previousPageObject.page = 0;
   }
+
+  return (
+    <div className={styles.pageContainer}>
+      <div className={styles.innerContainer}>
+        <div className={styles.pageButton}>
+          <Link href={`/?${serialize(previousPageObject)}`}>&lt; Forrige side </Link>
+        </div>
+        <div>Side: {pageObject.page}</div>
+        <div className={styles.pageButton}>
+          <Link href={`/?${serialize(nextPageObject)}`}>Næste side &gt;</Link>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function serialize(obj) {

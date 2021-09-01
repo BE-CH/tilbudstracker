@@ -4,26 +4,26 @@ import styles from '../styles/Sorting.module.scss';
 export default function Sorting({ pageObject }) {
   return (
     <div className={styles.container}>
-      <div>
-        <p className={styles.title}>Sorter: </p>
-        <select name="sorting" onChange={(e) => onChange(e, pageObject)} id="sorting" className={styles.select}>
-          <option value="procentage_change">Størst bestparelse</option>
-          <option value="cheapest">Billigst</option>
-          <option value="expensivest">Dyrest</option>
-        </select>
-      </div>
-      <div>
-        <p className={styles.title}>Butik: </p>
-        <select
-          name="sortingStore"
-          onChange={(e) => onStoreChange(e, pageObject)}
-          id="sortingStore"
-          className={styles.select}
-        >
-          <option value="all">Alle</option>
-          <option value="rema1000">Rema 1000</option>
-          <option value="coop">COOP</option>
-        </select>
+      <div className={styles.innerContainer}>
+        <div>
+          <select name="sorting" onChange={(e) => onChange(e, pageObject)} id="sorting" className={styles.select}>
+            <option value="procentage_change">Størst bestparelse</option>
+            <option value="cheapest">Billigst</option>
+            <option value="expensivest">Dyrest</option>
+          </select>
+        </div>
+        <div>
+          <select
+            name="sortingStore"
+            onChange={(e) => onStoreChange(e, pageObject)}
+            id="sortingStore"
+            className={styles.select}
+          >
+            <option value="all">Alle</option>
+            <option value="rema1000">Rema 1000</option>
+            <option value="coop">COOP</option>
+          </select>
+        </div>
       </div>
     </div>
   );

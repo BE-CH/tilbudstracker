@@ -1,5 +1,29 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 4px 0px rgba($color: #000000, $alpha: 0.2);
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.logo {
+  p {
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  a {
+    color: white;
+  }
+}
+
 .logoItems {
-  color: white;
+  margin-top: 20px;
 
   ul {
     list-style-type: none;
@@ -9,61 +33,36 @@
 
   li {
     display: inline;
-    margin-left: 35px;
+
+    margin-left: 5vw;
+    margin-right: 5vw;
+
     a {
       color: white;
+      text-transform: uppercase;
     }
   }
 }
 
-.logo {
-  color: white;
-  a {
-    color: white;
-  }
-  p {
-    font-size: 30px;
-  }
-}
+$breakpoint-phone: 425px;
 
-.innerHeader {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-}
-
-.header {
-  width: 100%;
-  background-color: #212121;
-}
-
-$breakpoint-mobileM: 375px;
-
-@media (max-width: $breakpoint-mobileM) {
-  .innerHeader {
-    justify-content: center;
-    width: 95%;
+@media (max-width: $breakpoint-phone) {
+  .logo {
+    p {
+      font-size: 35px;
+    }
   }
 
   .logoItems {
     margin-top: 15px;
-    width: 100%;
-    ul {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
     li {
-      text-align: center;
-      font-size: 15px;
-      margin-left: 0px;
+      font-size: 12px;
+      margin-left: auto;
+      width: 100%;
+      margin-right: auto;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
   }
 }
