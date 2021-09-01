@@ -4,26 +4,6 @@ const cron = require('node-cron');
 
 console.log('-> Started auto-update database every 5 hours.');
 
-if (process.env.NODE_ENV === 'production') {
-  getAllOffers('all', 'all')
-    .then(() => {
-      console.log('-> Database updated at startup!');
-    })
-    .catch(() => {
-      console.error('-> There was an error updating the database at startup');
-    });
-}
-
-cron.schedule('0 0 */5 * * *', () => {
-  getAllOffers('all', 'all')
-    .then(() => {
-      console.log('-> Database has been updated!');
-    })
-    .catch(() => {
-      console.error('-> There was an error updating the database');
-    });
-});
-
 getAllOffers = (type, amount) => {
   return new Promise((resolve, reject) => {
     Item.deleteMany({}, (err, removedObjects) => {
@@ -321,3 +301,23 @@ getCoopOffers = (amount) => {
       });
   });
 };
+
+if (process.env.NODE_ENV === 'production') {
+  getAllOffers('all', 'all')
+    .then(() => {
+      console.log('-> Database updated at startup!');
+    })
+    .catch(() => {
+      console.error('-> There was an error updating the database at startup');
+    });
+}
+
+cron.schedule('0 0 */5 * * *', () => {
+  getAllOffers('all', 'all')
+    .then(() => {
+      console.log('-> Database has been updated!');
+    })
+    .catch(() => {
+      console.error('-> There was an error updating the database');
+    });
+});
