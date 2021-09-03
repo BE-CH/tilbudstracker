@@ -307,7 +307,8 @@ if (process.env.NODE_ENV === 'production') {
     .then(() => {
       console.log('-> Database updated at startup!');
     })
-    .catch(() => {
+    .catch((err) => {
+      console.error(err);
       console.error('-> There was an error updating the database at startup');
     });
 }
