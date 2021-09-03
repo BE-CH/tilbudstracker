@@ -317,7 +317,8 @@ cron.schedule('0 0 */5 * * *', () => {
     .then(() => {
       console.log('-> Database has been updated!');
     })
-    .catch(() => {
+    .catch((err) => {
+      console.error(err);
       console.error('-> There was an error updating the database');
     });
 });
