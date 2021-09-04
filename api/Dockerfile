@@ -1,7 +1,5 @@
 FROM node:16
 
-LABEL org.opencontainers.image.source="https://github.com/BE-CH/tilbudstracker"
-
 WORKDIR /app
 
 COPY package.json ./
