@@ -181,6 +181,10 @@ getRemaOffers = (amount) => {
             categoryHits.forEach((item) => {
               if (item.pricing.is_on_discount) {
                 if (items.length < amount || amount === 'all') {
+                  if (isNaN(item.pricing.normal_price) || item.pricing.normal_price <= 0) {
+                    item.pricing.normal_price = 0.0;
+                  }
+
                   const itemObject = {
                     id: item.id,
                     name: item.name,
@@ -200,6 +204,10 @@ getRemaOffers = (amount) => {
                   itemObject.pricing.procentage_change =
                     ((itemObject.pricing.normal_price - itemObject.pricing.price) / itemObject.pricing.normal_price) *
                     100;
+
+                  if (isNaN(itemObject.pricing.procentage_change) || itemObject.pricing.procentage_change <= 0) {
+                    itemObject.pricing.procentage_change = 100.0;
+                  }
 
                   items.push(itemObject);
                 }
@@ -254,6 +262,10 @@ getCoopOffers = (amount) => {
                   correctNormalPrice = item.salesPrice.amount / (1 - item.discountLabel.savedPercentage.amount / 100);
                 }
 
+                if (isNaN(correctNormalPrice) || correctNormalPrice <= 0) {
+                  correctNormalPrice = 0.0;
+                }
+
                 const itemObject = {
                   id: item.id,
                   name: item.displayName,
@@ -283,6 +295,11 @@ getCoopOffers = (amount) => {
                 itemObject.pricing.procentage_change =
                   ((itemObject.pricing.normal_price - itemObject.pricing.price) / itemObject.pricing.normal_price) *
                   100;
+
+                // if the procentage change is NaN beacuse of division by 0. then set change to 0.
+                if (isNaN(itemObject.pricing.procentage_change) || itemObject.pricing.procentage_change <= 0) {
+                  itemObject.pricing.procentage_change = 100.0;
+                }
 
                 items.push(itemObject);
               }
