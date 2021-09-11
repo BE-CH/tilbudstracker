@@ -22,6 +22,7 @@ export default function Sorting({ pageObject }) {
             <option value="all">Alle</option>
             <option value="rema1000">Rema 1000</option>
             <option value="coop">COOP</option>
+            <option value="foetex">Føtex</option>
           </select>
         </div>
       </div>

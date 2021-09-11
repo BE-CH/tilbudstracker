@@ -11,7 +11,7 @@ router.get('/getoffers', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
   Item.find({})
-    .limit(1000)
+    .limit(2500)
     .exec((err, foundItems) => {
       if (!err && foundItems) {
         res

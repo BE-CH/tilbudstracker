@@ -9,7 +9,7 @@ export default function TableItem({ itemObject }) {
           <div className={styles.storeImageContainer}>
             <div className={styles.storeImage}>
               <Image
-                src={itemObject.store === 'rema1000' ? '/images/Rema_1000_logo.png' : '/images/coop_logo.png'}
+                src={`/images/${itemObject.store.toLowerCase()}_logo.png`}
                 objectFit="contain"
                 layout="fill"
               ></Image>
