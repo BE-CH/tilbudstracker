@@ -17,7 +17,7 @@ export default function TableItem({ itemObject }) {
           </div>
 
           <div className={styles.image}>
-            <Image src={itemObject.imageurl} objectFit="contain" layout="fill"></Image>
+            <img src={itemObject.imageurl} />
           </div>
           <div className={styles.textContainer}>
             <p className={styles.title}>{itemObject.name}</p>

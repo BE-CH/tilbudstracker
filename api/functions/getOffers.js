@@ -201,7 +201,7 @@ getRemaOffers = (amount) => {
                     category_id: item.category_id,
                     category_name: item.category_name,
                     popularity: item.extra.popularity,
-                    imageurl: `https://cphapp.rema1000.dk/api/v1${item.image_url}/200.png`,
+                    imageurl: `https://cphapp.rema1000.dk/api/v1${item.image_url}/125.png`,
                     pricing: item.pricing,
                     url: `https://shop.rema1000.dk/varer/${item.id}`,
                   };
@@ -286,7 +286,7 @@ getCoopOffers = (amount) => {
                   category_id: -1,
                   category_name: item.category,
                   popularity: -1,
-                  imageurl: `${item.image}&format=png&quality=75&width=200&height=200`,
+                  imageurl: `${item.image}&format=png&quality=75&width=125&height=125`,
                   pricing: {
                     price: item.salesPrice.amount,
                     max_quantity: item.maxQuantity,
@@ -795,7 +795,7 @@ getFoetexOffers = (amount) => {
                     category_id: -1,
                     category_name: item.categories.lvl0.length > 0 ? item.categories.lvl0[0] : 'No category',
                     popularity: -1,
-                    imageurl: `https://digitalassets.sallinggroup.com/image/upload/e_trim/c_pad,e_sharpen:80,f_auto,q_auto,w_200,h_200/id/${
+                    imageurl: `https://digitalassets.sallinggroup.com/image/upload/e_trim/c_pad,e_sharpen:80,f_auto,q_75,w_125,h_125/id/${
                       item.images && item.images.length > 0 ? item.images[0] : 'noimage'
                     }`,
                     pricing: {
