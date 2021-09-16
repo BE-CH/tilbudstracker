@@ -12,6 +12,7 @@ export default function TableItem({ itemObject }) {
                 src={`/images/${itemObject.store.toLowerCase()}_logo.png`}
                 objectFit="contain"
                 layout="fill"
+                alt={itemObject.store.toLowerCase()}
               ></Image>
             </div>
           </div>
