@@ -7,7 +7,7 @@ export default function Footer() {
       <div className={styles.innerFooter}>
         <p>
           Made by Bech Solutions @{' '}
-          <a target="_blank" href="http://bech.solutions">
+          <a rel="noopener" target="_blank" href="http://bech.solutions">
             http://bech.solutions
           </a>
         </p>

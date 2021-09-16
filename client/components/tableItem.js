@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function TableItem({ itemObject }) {
   return (
     <div className={styles.container}>
-      <a href={itemObject.url} target="_blank">
+      <a rel="noopener" href={itemObject.url} target="_blank">
         <div className={styles.innerContainer}>
           <div className={styles.storeImageContainer}>
             <div className={styles.storeImage}>
@@ -17,7 +17,12 @@ export default function TableItem({ itemObject }) {
           </div>
 
           <div className={styles.image}>
-            <img src={itemObject.imageurl} />
+            <img
+              alt={`${itemObject.name} - ${itemObject.pricing.price} DKK`}
+              width="220"
+              height="122.5"
+              src={itemObject.imageurl}
+            />
           </div>
           <div className={styles.textContainer}>
             <p className={styles.title}>{itemObject.name}</p>
