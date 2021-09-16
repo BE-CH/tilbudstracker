@@ -201,7 +201,7 @@ getRemaOffers = (amount) => {
                     category_id: item.category_id,
                     category_name: item.category_name,
                     popularity: item.extra.popularity,
-                    imageurl: `https://cphapp.rema1000.dk/api/v1${item.image_url}/125.png`,
+                    imageurl: `https://cphapp.rema1000.dk/api/v1${item.image_url}/125.jpg`,
                     pricing: item.pricing,
                     url: `https://shop.rema1000.dk/varer/${item.id}`,
                   };
@@ -286,7 +286,7 @@ getCoopOffers = (amount) => {
                   category_id: -1,
                   category_name: item.category,
                   popularity: -1,
-                  imageurl: `${item.image}&format=png&quality=75&width=125&height=125`,
+                  imageurl: `${item.image}&format=webp&quality=75&width=125&height=125`,
                   pricing: {
                     price: item.salesPrice.amount,
                     max_quantity: item.maxQuantity,
