@@ -28,9 +28,13 @@ export default function TableItem({ itemObject }) {
           <div className={styles.textContainer}>
             <p className={styles.title}>{itemObject.name}</p>
             <p className={styles.description}>{itemObject.underline}</p>
-            <p className={styles.oldPrice}>{itemObject.pricing.normal_price} DKK</p>
+            <p className={styles.oldPrice}>
+              {itemObject.justAvisvare ? `‎` : `${itemObject.pricing.normal_price} DKK`}
+            </p>
             <p className={styles.currentPrice}>{itemObject.pricing.price} DKK</p>
-            <p className={styles.saveProcentage}>({itemObject.pricing.procentage_change.toFixed(2)}%)</p>
+            <p className={styles.saveProcentage}>
+              ({itemObject.justAvisvare ? `Avisvare` : `${itemObject.pricing.procentage_change.toFixed(2)}%`})
+            </p>
           </div>
         </div>
       </a>

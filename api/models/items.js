@@ -12,6 +12,7 @@ const itemSchema = new mongoose.Schema({
   category_name: String,
   popularity: Number,
   url: String,
+  justAvisvare: Boolean,
   imageurl: String,
   pricing: {
     price: Number,

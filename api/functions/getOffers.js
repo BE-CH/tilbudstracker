@@ -26,6 +26,7 @@ getAllOffers = (type, amount) => {
                 imageurl: item.imageurl,
                 pricing: item.pricing,
                 url: item.url,
+                justAvisvare: item.justAvisvare,
               };
             });
 
@@ -204,6 +205,7 @@ getRemaOffers = (amount) => {
                     imageurl: `https://cphapp.rema1000.dk/api/v1${item.image_url}/125.jpg`,
                     pricing: item.pricing,
                     url: `https://shop.rema1000.dk/varer/${item.id}`,
+                    justAvisvare: item.pricing.price === item.pricing.normal_price ? true : false,
                   };
 
                   itemObject.pricing.procentage_change = parseFloat(
@@ -287,6 +289,7 @@ getCoopOffers = (amount) => {
                   category_name: item.category,
                   popularity: -1,
                   imageurl: `${item.image}&format=webp&quality=75&width=125&height=125`,
+                  justAvisvare: false,
                   pricing: {
                     price: item.salesPrice.amount,
                     max_quantity: item.maxQuantity,
@@ -809,6 +812,7 @@ getFoetexOffers = (amount) => {
                       price_changes_on: 'No date',
                       is_advertised: true,
                     },
+                    justAvisvare: false,
                   };
 
                   itemObject.pricing.procentage_change = parseFloat(
