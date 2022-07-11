@@ -3,7 +3,7 @@ const router = express.Router();
 const Item = require('../models/items');
 
 router.get('/', function (req, res, next) {
-  res.json({ welcome: 'API endpoint of tilbudstracker.dk', status: 200 });
+  res.json({ welcome: 'API endpoint of tilbudstracker.dk', status: 200, version: 2.0 });
 });
 
 router.get('/getoffers', (req, res, next) => {
