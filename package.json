@@ -3,5 +3,11 @@
   "scripts": {
     "startDev": "concurrently \"cd ./api && yarn startServerDev\" \"cd ./client && yarn startClientDev\"",
     "startProd": "concurrently \"cd ./api && yarn startServer\" \"cd ./client && yarn startClient\""
-  }
+  },
+  "private": true,
+  "workspaces": [
+    "api",
+    "client"
+  ],
+  "packageManager": "yarn@3.2.1"
 }
