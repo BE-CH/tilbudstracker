@@ -1,40 +1,36 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import TilbudScreen from './screens/TilbudScreen';
+import AboutScreen from './screens/AboutScreen';
 
 const Tab = createBottomTabNavigator();
 
 const BottomNav = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Tilbud" component={HomeScreen} />
-      <Tab.Screen name="Feedback" component={Feedback} />
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Tab.Screen name="Tilbud" component={TilbudScreen} />
+      <Tab.Screen name="Om appen" component={AboutScreen} />
     </Tab.Navigator>
   );
 };
 
+const navTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#2c5364',
+  },
+};
+
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
       <BottomNav />
     </NavigationContainer>
-  );
-};
-
-const HomeScreen = () => {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Tilbud</Text>
-    </View>
-  );
-};
-
-const Feedback = () => {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Feedback</Text>
-    </View>
   );
 };
 

@@ -8019,6 +8019,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-dropdown-picker@npm:^5.4.2":
+  version: 5.4.2
+  resolution: "react-native-dropdown-picker@npm:5.4.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 7fb999219f74f727410786e2bd1dfafcdaa174039a1ac81af16feef9bcb62dbf865497ec23ad8a650c3020c21895f999262a1151fce59b14d14d1b696ca58551
+  languageName: node
+  linkType: hard
+
 "react-native-gradle-plugin@npm:^0.0.7":
   version: 0.0.7
   resolution: "react-native-gradle-plugin@npm:0.0.7"
@@ -9338,6 +9348,7 @@ __metadata:
     metro-react-native-babel-preset: ^0.70.3
     react: 18.0.0
     react-native: 0.69.1
+    react-native-dropdown-picker: ^5.4.2
     react-native-safe-area-context: ^4.3.1
     react-native-screens: ^3.15.0
     react-test-renderer: 18.0.0
