@@ -55,4 +55,13 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
   },
+  storeimage: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+    zIndex: 100,
+  },
 });

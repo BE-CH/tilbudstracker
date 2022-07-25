@@ -45,25 +45,25 @@ type ItemFull = {
 const TilbudScreen = () => {
   const scrollViewRef = useRef<ScrollView | null>(null);
 
+  const [allitems, setallitems] = useState<ItemFull[]>([]);
   const [items, setItems] = useState<ItemFull[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [searchText, setSearchText] = useState<string>('');
+  const [selectedStore, setSelectedStore] = useState<
+    'rema1000' | 'foetex' | 'coop' | 'all'
+  >('all');
   const [statusText, setStatusText] = useState('Indlæser...');
   const itemsPerPage = 10;
+
   useEffect(() => {
+    // Get offers once
     async function getOffers() {
       try {
         const offers = await axios.get(
           'https://api.tilbudstracker.dk/getoffers',
         );
-        const startAmount = Math.round(currentPage * itemsPerPage);
-        const endAmount = Math.round(currentPage * itemsPerPage + itemsPerPage);
 
-        const theOffers: ItemFull[] = offers.data.items;
-
-        theOffers.sort((a, b) => {
-          return b.pricing.procentage_change - a.pricing.procentage_change;
-        });
-        setItems(theOffers.slice(startAmount, endAmount));
+        setallitems(offers.data.items);
         setStatusText('');
       } catch (err) {
         setStatusText('Der skete en fejl!');
@@ -72,7 +72,34 @@ const TilbudScreen = () => {
     }
 
     getOffers();
-  }, [currentPage]);
+  }, []);
+
+  useEffect(() => {
+    if (allitems) {
+      let theOffers = allitems;
+      const startAmount = Math.round(currentPage * itemsPerPage);
+      const endAmount = Math.round(currentPage * itemsPerPage + itemsPerPage);
+
+      if (selectedStore !== 'all') {
+        theOffers = theOffers.filter(val => {
+          if (val.store.toLowerCase() === selectedStore.toLowerCase()) {
+            return val;
+          }
+        });
+      }
+
+      if (searchText.length > 1) {
+        theOffers = theOffers.filter(v =>
+          v.name.toLowerCase().includes(searchText.toLowerCase()),
+        );
+      }
+
+      theOffers.sort((a, b) => {
+        return b.pricing.procentage_change - a.pricing.procentage_change;
+      });
+      setItems(theOffers.slice(startAmount, endAmount));
+    }
+  }, [currentPage, searchText, allitems, selectedStore]);
 
   async function changePage(direction: 'previous' | 'next') {
     if (direction === 'next') {
@@ -89,9 +116,22 @@ const TilbudScreen = () => {
   return (
     <SafeAreaView style={TilbudScreenStyles.safeArea}>
       <View style={TilbudScreenStyles.topView}>
-        <Text style={TilbudScreenStyles.topText}>TILBUDSTRACKER</Text>
+        <Text
+          onPress={() => {
+            // Go to first page and top
+            scrollViewRef.current?.scrollTo({x: 0, y: 0, animated: true});
+            setCurrentPage(0);
+          }}
+          style={TilbudScreenStyles.topText}>
+          TILBUDSTRACKER
+        </Text>
       </View>
-      <SearchComp />
+      <SearchComp
+        searchState={searchText}
+        setSearchState={setSearchText}
+        setStoreState={setSelectedStore}
+        storeState={selectedStore}
+      />
       <ScrollView
         ref={scrollViewRef}
         contentContainerStyle={TilbudScreenStyles.listOfTilbudContent}
@@ -107,6 +147,7 @@ const TilbudScreen = () => {
                 oldprice={v.pricing.normal_price}
                 price={v.pricing.price}
                 saving={v.pricing.procentage_change}
+                store={v.store}
                 key={i}
               />
             );

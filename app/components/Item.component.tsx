@@ -10,6 +10,7 @@ type ItemDisplay = {
   oldprice: number;
   price: number;
   saving: string | number;
+  store: string;
 };
 
 const ItemComp = ({
@@ -20,6 +21,7 @@ const ItemComp = ({
   oldprice,
   price,
   saving,
+  store,
 }: ItemDisplay) => {
   async function openLink(link: string) {
     const supported = await Linking.canOpenURL(link);
@@ -28,8 +30,18 @@ const ItemComp = ({
     }
   }
 
+  const images = {
+    foetex: require('../images/foetex_logo.png'),
+    coop: require('../images/coop_logo.png'),
+    rema1000: require('../images/rema1000_logo.png'),
+  };
+
   return (
     <View style={styles.container}>
+      <Image
+        source={images[store.toLowerCase() as keyof typeof images]}
+        style={styles.storeimage}
+      />
       <TouchableHighlight onPress={() => openLink(url)} underlayColor={'white'}>
         <View>
           <Image
@@ -46,7 +58,7 @@ const ItemComp = ({
             )}
             <Text style={styles.price}>{price.toFixed(0)} DKK</Text>
             <Text style={styles.saving}>
-              ({saving === 100 ? 'Avisvare' : saving})
+              ({saving === 100 ? 'Avisvare' : `${saving}%`})
             </Text>
           </View>
         </View>
