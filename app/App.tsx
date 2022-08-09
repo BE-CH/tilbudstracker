@@ -22,7 +22,19 @@ const BottomNav = () => {
         name="Tilbud"
         component={TilbudScreen}
       />
-      <Tab.Screen name="Om appen" component={AboutScreen} />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialCommunityIcons
+              name="information"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+        name="Om appen"
+        component={AboutScreen}
+      />
     </Tab.Navigator>
   );
 };
