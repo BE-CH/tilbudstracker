@@ -8111,6 +8111,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-splash-screen@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "react-native-splash-screen@npm:3.3.0"
+  peerDependencies:
+    react-native: ">=0.57.0"
+  checksum: 14c565d5d4214f55586dcf6f7abd12d99d3e0667f67de3bda7aa24988971567b283a4187fbc0c6269c83b3c21d59d1950335c61bb0780ec2d065e20b3b9199d0
+  languageName: node
+  linkType: hard
+
 "react-native-vector-icons@npm:^9.2.0":
   version: 9.2.0
   resolution: "react-native-vector-icons@npm:9.2.0"
@@ -9418,6 +9427,7 @@ __metadata:
     react-native-dropdown-picker: ^5.4.2
     react-native-safe-area-context: ^4.3.1
     react-native-screens: ^3.15.0
+    react-native-splash-screen: ^3.3.0
     react-native-vector-icons: ^9.2.0
     react-test-renderer: 18.0.0
     typescript: ^4.4.4
