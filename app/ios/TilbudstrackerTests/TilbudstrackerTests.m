@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface tilbudstracker_appTests : XCTestCase
+@interface TilbudstrackerTests : XCTestCase
 
 @end
 
-@implementation tilbudstracker_appTests
+@implementation TilbudstrackerTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {
