@@ -11,7 +11,7 @@ import SearchComp from '../components/search.componen';
 import TilbudScreenStyles from '../styles/TilbudScreen.styles';
 import axios from 'axios';
 
-type ItemFull = {
+export type ItemFull = {
   pricing: {
     price: number;
     max_quantity: number;

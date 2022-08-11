@@ -46,7 +46,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 #endif
 
   NSDictionary *initProps = [self prepareInitialProps];
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"tilbudstracker_app", initProps);
+  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"Tilbudstracker", initProps);
 
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor colorWithRed: 0.17 green: 0.33 blue: 0.39 alpha: 1.00];

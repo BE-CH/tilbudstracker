@@ -3,10 +3,8 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   safeArea: {
     height: '100%',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    margin: 0,
+    padding: 0,
   },
   header: {
     textAlign: 'center',
@@ -39,5 +37,24 @@ export default StyleSheet.create({
     overflow: 'hidden',
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginBottom: 15,
+  },
+  scrollviewcontainer: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    margin: 0,
+    padding: 0,
+  },
+  scrollview: {
+    width: '100%',
+    margin: 0,
+    padding: 0,
+  },
+  outsideview: {
+    marginBottom: 0,
+    margin: 0,
   },
 });
