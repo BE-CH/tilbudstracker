@@ -46,6 +46,7 @@ const TilbudScreen = () => {
   const scrollViewRef = useRef<ScrollView | null>(null);
 
   const [allitems, setallitems] = useState<ItemFull[]>([]);
+  const [itemsWithFilter, setItemsWithFilter] = useState<number>(0);
   const [items, setItems] = useState<ItemFull[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchText, setSearchText] = useState<string>('');
@@ -75,7 +76,7 @@ const TilbudScreen = () => {
   }, []);
 
   useEffect(() => {
-    if (allitems) {
+    if (allitems && allitems.length > 0) {
       let theOffers = allitems;
       const startAmount = Math.round(currentPage * itemsPerPage);
       const endAmount = Math.round(currentPage * itemsPerPage + itemsPerPage);
@@ -97,12 +98,28 @@ const TilbudScreen = () => {
       theOffers.sort((a, b) => {
         return b.pricing.procentage_change - a.pricing.procentage_change;
       });
+
+      if (theOffers.length === 0) {
+        setStatusText('Ingen resultater');
+      } else {
+        setStatusText('');
+      }
+      setItemsWithFilter(theOffers.length);
       setItems(theOffers.slice(startAmount, endAmount));
     }
   }, [currentPage, searchText, allitems, selectedStore]);
 
+  useEffect(() => {
+    if (searchText.length > 0) {
+      setCurrentPage(0);
+    }
+  }, [searchText]);
+
   async function changePage(direction: 'previous' | 'next') {
-    if (direction === 'next') {
+    if (
+      direction === 'next' &&
+      itemsWithFilter >= (currentPage + 1) * itemsPerPage
+    ) {
       await setCurrentPage(currentPage + 1);
       await scrollViewRef.current?.scrollTo({x: 0, y: 0, animated: true});
     }
