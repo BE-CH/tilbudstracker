@@ -1,6 +1,4 @@
-FROM node:16
-
-LABEL org.opencontainers.image.source="ghcr.io/be-ch/tilbudstracker.git"
+FROM node:18
 
 WORKDIR /app
 
